@@ -1,0 +1,186 @@
+{
+  "presentation" : {
+    "footer" : {
+      "children" : [ {
+                       "type" : "richText",
+                       "value" : "Powered By Workday Cloud Platform",
+                       "enabled" : "true"
+                     } ],
+      "type" : "footer"
+    },
+    "header" : {
+      "headerSize" : "STANDARD",
+      "type" : "header"
+    },
+    "body" : {
+      "children" : [ {
+       "gridType" : "LIST",
+       "rowVariableName" : "request",
+       "columns" : [ {
+                 "cellTemplate" : {
+                     "type" : "text",
+                     "value" : "${request.Workday_Account}"
+                 },
+                 "columnId" : "Workday_Account",
+                 "label" : "Workday Account",
+                 "id" : "Workday_Account",
+                 "type" : "column"
+             },
+           {
+               "cellTemplate" : {
+                   "type" : "text",
+                   "value" : "${request.Organization_Roles}"
+               },
+               "columnId" : "Organization_Roles",
+               "label" : "Organization Roles",
+               "id" : "Organization_Roles",
+               "type" : "column"
+           },
+
+
+           {
+           "cellTemplate" : {
+             "type" : "text",
+             "value" : "${request.medicalDocumentationStatus}"
+           },
+           "columnId" : "med_doc_stat",
+           "label" : "Medical Documentation Status",
+           "id" : "med_doc_stat",
+           "type" : "column"
+         }, {
+          "cellTemplate" : {
+            "type" : "text",
+            "value" : "${request.reasonForTheRequest}"
+          },
+          "columnId" : "res_for_req",
+          "label" : "Reason For Request",
+          "id" : "res_for_req",
+          "type" : "column"
+        }, {
+         "cellTemplate" : {
+           "type" : "text",
+           "value" : "${request.problemDescription}"
+         },
+         "columnId" : "prob_desc",
+         "label" : "Problem description",
+         "id" : "prob_desc",
+         "type" : "column"
+        }, {
+        "cellTemplate" : {
+          "type" : "text",
+          "value" : "${request.accommodationName}"
+        },
+        "columnId" : "acc_name",
+        "label" : "Accomodation Name",
+        "id" : "acc_name",
+        "type" : "column"
+      }, {
+       "cellTemplate" : {
+         "type" : "date",
+         "value" : "${request.expirationDate}"
+       },
+       "columnId" : "exp_date",
+       "label" : "Expiration Date",
+       "id" : "exp_date",
+       "type" : "column"
+     },{
+         "cellTemplate" : {
+           "type" : "text",
+           "value" : "${request.action}"
+         },
+         "columnId" : "action",
+         "label" : "Action",
+         "id" : "action",
+         "type" : "column"
+   }, {
+        "cellTemplate" : {
+          "type" : "text",
+          "value" : "${request.catalog}"
+        },
+        "columnId" : "catalog",
+        "label" : "Catalog",
+        "id" : "catalog",
+        "type" : "column"
+      }, {
+       "cellTemplate" : {
+         "type" : "text",
+         "value" : "${request.accommodationSummary}"
+       },
+       "columnId" : "acc_sum",
+       "label" : "Accommodation Summary",
+       "id" : "acc_sum",
+       "type" : "column"
+     },{
+         "cellTemplate" : {
+           "type" : "text",
+           "value" : "${request.accommodationDetails}"
+         },
+         "columnId" : "acc_det",
+         "label" : "Accommodation details",
+         "id" : "acc_det",
+         "type" : "column"
+       }, {
+        "cellTemplate" : {
+          "type" : "text",
+          "value" : "${request.accommodationGuidance}"
+        },
+        "columnId" : "acc_guid",
+        "label" : "Accommodation Guidance",
+        "id" : "acc_guid",
+        "type" : "column"
+      }, {
+       "cellTemplate" : {
+         "type" : "text",
+         "value" : "${request.accommodationSelected}"
+       },
+       "columnId" : "acc_sel",
+       "label" : "Accommodation selected",
+       "id" : "acc_sel",
+       "type" : "column"
+     },{
+          "cellTemplate" : {
+              "type" : "text",
+              "value" : "${request.workdayID}"
+          },
+          "columnId" : "workday_id",
+          "label" : "Workday ID",
+          "id" : "Workday_ID",
+          "type" : "column"
+      }
+        ],
+       "id" : "requests",
+       "title" : "Request Details",
+       "type" : "grid",
+       "rows" : "${awcreportData.Report_Entry}"
+     },{
+          "action" : "PRIMARY",
+          "label" : "Edit",
+          "type" : "button",
+
+          "taskReference" : {
+
+              "taskId" : "awcsubmit"
+          }
+          },
+          {
+         "action" : "SECONDARY",
+         "label" : "Home",
+         "type" : "button",
+         "taskReference" : {
+             "taskId" : "home"
+         }
+       }
+      ],
+      "type" : "section",
+      "title" : "Request History"
+    }
+  },
+
+  "id" : "awcViewRequests",
+  "endPoints" : [ {
+    "baseUrlType" : "AWCREPORT",
+    "name" : "awcreportData",
+    "authType" : "sso",
+    "url" : "/kumars-impl/CR_AWC_Cloud_Platform?Worker!WID=745f0514c04001d2fe2e3a45fe9ed8b4&format=json"
+  } ]
+}

@@ -1,0 +1,109 @@
+{
+  "presentation" : {
+    "headerSize" : "VPS_DEFAULT",
+    "footer" : {
+      "children" : [ {
+        "type" : "richText",
+        "value" : "Powered By WCP",
+        "enabled" : "false"
+      } ],
+      "type" : "footer"
+    },
+    "body" : {
+      "horizontal" : false,
+      "sorted" : false,
+      "children" : [ {
+        "valueOutBinding" : "postCustomObject.medicalDocumentationStatus",
+        "label" : "Medical documentation status",
+        "id" : "med_doc_stat",
+        "type" : "text",
+        "value" : "${awcpocData.medicalDocumentationStatus} ",
+        "enabled" : "${true}"
+      }, {
+        "valueOutBinding" : "postCustomObject.reasonForTheRequest",
+        "label" : "Reason for the request",
+        "id" : "res_for_req",
+        "type" : "text",
+        "value" : "${awcpocData.reasonForTheRequest}"
+      }, {
+        "valueOutBinding" : "postCustomObject.problemDescription",
+        "label" : "Problem description",
+        "id" : "prob_desc",
+        "type" : "text",
+        "value" : "${awcpocData.problemDescription}"
+      }, {
+        "valueOutBinding" : "postCustomObject.accommodationName",
+        "label" : "Accommodation name",
+        "id" : "acc_name",
+        "type" : "text",
+        "value" : "${awcpocData.accommodationName}"
+      }, {
+        "valueOutBinding" : "postCustomObject.expirationDate",
+        "label" : "Expiration date",
+        "id" : "exp_date",
+        "type" : "date",
+        "value" : "${awcpocData.expirationDate}"
+      }, {
+        "valueOutBinding" : "postCustomObject.action",
+        "label" : "Action",
+        "id" : "action",
+        "type" : "text",
+        "value" : "${awcpocData.action}",
+        "visible" : "${awcpocData.action == 'Test Action3'}"
+      }, {
+        "valueOutBinding" : "postCustomObject.catalog",
+        "label" : "Catalog",
+        "id" : "catalog",
+        "type" : "text",
+        "value" : "${awcpocData.catalog}"
+      }, {
+        "valueOutBinding" : "postCustomObject.accommodationSummary",
+        "label" : "Accommodation summary",
+        "id" : "acc_sum",
+        "type" : "text",
+        "value" : "${awcpocData.accommodationSummary}"
+      }, {
+        "valueOutBinding" : "postCustomObject.accommodationDetails",
+        "label" : "Accommodation details",
+        "id" : "acc_det",
+        "type" : "text",
+        "value" : "${awcpocData.accommodationDetails}"
+      }, {
+        "valueOutBinding" : "postCustomObject.accommodationGuidance",
+        "label" : "Accommodation guidance",
+        "id" : "acc_guid",
+        "type" : "text",
+        "value" : "${awcpocData.accommodationGuidance}"
+      }, {
+        "valueOutBinding" : "postCustomObject.accommodationSelected",
+        "label" : "Accommodation selected",
+        "id" : "acc_sel",
+        "type" : "text",
+        "value" : "${awcpocData.accommodationSelected}"
+      }, {
+        "valueOutBinding" : "postCustomObject.worker.id",
+        "label" : "Worker Id",
+        "id" : "workerid",
+        "type" : "text",
+        "value" : "745f0514c04001d2fe2e3a45fe9ed8b4"
+      } ],
+      "title" : "Accommodation Request Form",
+      "type" : "section"
+    }
+  },
+  "outboundData" : {
+    "outboundEndPoints" : [ {
+      "baseUrlType" : "AWCPOC",
+      "name" : "postCustomObject",
+      "authType" : "sso",
+      "url" : "/customObjects/awc/766f3df40606431e8229445f1fe283c3?updateIfExists=true"
+    } ]
+  },
+  "id" : "awcsubmit",
+  "endPoints" : [ {
+     "baseUrlType" : "AWCPOC",
+     "name" : "awcpocData",
+     "authType" : "sso",
+     "url" : "/customObjects/awc/745f0514c04001d2fe2e3a45fe9ed8b4"
+      } ]
+}

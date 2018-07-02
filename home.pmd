@@ -1,0 +1,94 @@
+{
+  "presentation" : {
+    "headerSize" : "VPS_DEFAULT",
+    "footer" : {
+      "children" : [ {
+        "type" : "richText",
+        "value" : "Powered By Workday Cloud Platform",
+        "enabled" : "false"
+      } ],
+      "type" : "footer"
+    },
+    "enableFullScreen" : "${false}",
+    "body" : {
+      "children" : [ {
+        "children" : [ {
+          "children" : [
+
+    {
+            "type" : "richText",
+            "value" : "Click here to create accommodation request for the user! The button below routes to a page that does the following:  <ul><li>Get accommodations for the first time,</li> <li>Update accommodations because your job or disability has changed,</li><li>Get additional accommodation or accommodation accessories to improve productivity.</li></ul>"
+          }, {
+            "action" : "PRIMARY",
+            "label" : "Create Request",
+            "type" : "button",
+            "taskReference" : {
+              "taskId" : "awcsubmit"
+            }
+
+      }
+
+],
+          "type" : "section",
+          "title" : "Create Accommodations Request"
+        },
+            {
+          "children" : [
+
+            {
+            "type" : "richText",
+            "value" : "Retrieve the most recent request history for the worker from Workday!  The button below routes to a page that does the following:"
+
+
+          }, {
+            "action" : "PRIMARY",
+            "label" : "View Request",
+            "type" : "button",
+
+            "taskReference" : {
+              "taskId" : "awcViewRequests"
+            }
+          }
+        ],
+          "type" : "section",
+          "title" : "View Accommodations Request"
+
+        },
+            {
+                "children" : [
+
+                    {
+                        "type" : "richText",
+                        "value" : "Assigning user to different roles in AWC and giving authorization",
+                        "visible" : "${awcreportDataPermission.Report_Entry[0].Organization_Roles == 'Manager; Matrix Manager'}"
+
+                    }, {
+                           "action" : "PRIMARY",
+                           "label" : "Users and role assignments",
+                           "type" : "button",
+                           "visible" : "${awcreportDataPermission.Report_Entry[0].Organization_Roles == 'Manager; Matrix Manager'}",
+                           "taskReference" : {
+                               "taskId" : "home"
+                           }
+                       }
+                ],
+                "type" : "section",
+                "title" : "Users and Role Assignments (Admin)",
+                "visible" : "${awcreportDataPermission.Report_Entry[0].Organization_Roles == 'Manager; Matrix Manager'}"
+            }],
+        "type" : "section"
+      } ],
+      "type" : "section",
+      "title" : "Accessible Workplace Connection "
+    },
+    "confirmPageMode" : false,
+    "dirtyPage" : "${false}"
+  },
+    "id" : "home",
+  "endPoints" : [ {
+  "baseUrlType" : "AWCREPORT",
+  "name" : "awcreportDataPermission",
+  "authType" : "sso",
+  "url" : "/kumars-impl/CR_AWC_Cloud_Platform?Worker!WID=745f0514c04001d2fe2e3a45fe9ed8b4&format=json"
+} ]
+}

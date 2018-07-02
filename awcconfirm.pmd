@@ -1,0 +1,36 @@
+{
+  "presentation" : {
+    "headerSize" : "VPS_DEFAULT",
+    "footer" : {
+      "children" : [ {
+        "type" : "richText",
+        "value" : "Powered By WCP",
+        "enabled" : "false"
+      } ],
+      "type" : "footer"
+    },
+    "body" : {
+      "horizontal" : false,
+      "children" : [ {
+        "id" : "hello",
+        "label" : "",
+        "type" : "richText",
+        "value" : "<b>Request Submitted Successfully!</b>"
+      }, {
+        "action" : "PRIMARY",
+        "label" : "Home",
+        "type" : "button",
+        "taskReference" : {
+          "parameters" : "${json:create(json:attribute('workerId', queryParams.workerId))}",
+          "taskId" : "home"
+        }
+      } ],
+      "type" : "section"
+    }
+  },
+  "outboundData" : {
+    "outboundEndPoints" : [ ]
+  },
+  "id" : "awcconfirm",
+  "endPoints" : [ ]
+}

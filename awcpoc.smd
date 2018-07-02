@@ -1,0 +1,99 @@
+{
+  "id" : "awcpoc",
+  "applicationId" : "awcpoc",
+  "siteId" : "awcpoc",
+  "tasks" : [ {
+    "id" : "root",
+    "routingPattern" : "/",
+    "page" : {
+      "id" : "home"
+    },
+    "pageId" : "home"
+  }, {
+    "id" : "home",
+    "routingPattern" : "home",
+    "page" : {
+      "id" : "home"
+    },
+    "pageId" : "home"
+  }, {
+    "id" : "awcViewRequests",
+    "routingPattern" : "awcViewRequests",
+    "page" : {
+      "id" : "awcViewRequests"
+    },
+    "pageId" : "awcViewRequests"
+  }, {
+    "id" : "awcsubmit",
+    "routingPattern" : "awcsubmit",
+    "page" : {
+      "id" : "awcsubmit"
+    },
+    "pageId" : "awcsubmit"
+  }, {
+    "id" : "awcconfirm",
+    "routingPattern" : "awcconfirm",
+    "page" : {
+      "id" : "awcconfirm"
+    },
+    "pageId" : "awcconfirm"
+  } ],
+  "flowDefinitions" : [ {
+    "id" : "awcSubmitFlow",
+    "flowSteps" : [ {
+      "id" : "home",
+      "transitions" : [ {
+        "id" : "awcsubmit",
+        "value" : "awcsubmit",
+        "condition" : "true"
+      } ],
+      "startsFlow" : true,
+      "taskId" : "home"
+    }, {
+      "id" : "awcsubmit",
+      "transitions" : [ {
+        "id" : "awcconfirm",
+        "value" : "awcconfirm",
+        "condition" : "true"
+      } ],
+      "taskId" : "awcsubmit",
+      "descriptor" : "Submit awcsubmit"
+    }, {
+      "id" : "awcconfirm",
+      "endsFlow" : true,
+      "taskId" : "awcconfirm"
+    } ]
+  } ],
+  "dateFormat" : "yyyy-MM-dd",
+  "languages" : [ {
+    "code" : "en-US",
+    "description" : "English"
+  } ],
+  "defaultLanguage" : {
+    "code" : "en-US",
+    "description" : "English"
+  },
+  "auth" : {
+    "type" : "SSO"
+  },
+  "siteAuth" : {
+    "authTypes" : [ {
+      "scheme" : "SSO",
+      "id" : "sso",
+      "authenticationScheme" : "SSO"
+    } ],
+    "defaultId" : "sso"
+  },
+  "appProperties" : [ ],
+  "cdnEnabled" : true,
+  "ssoSite" : true,
+  "authType" : "SSO",
+  "dataProviders" : [
+    {
+      "key" : "AWCPOC",
+      "value" : "https://api.workday.com/common/v1"
+    },{
+    "key" : "AWCREPORT",
+    "value" : "https://api.workday.com/raas"
+  } ]
+}
